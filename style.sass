@@ -1,0 +1,1721 @@
+@import url('./normalize.css')
+@import './variables.sass'
+@import './fonts.sass'
+
+body
+  background-color: $color-white
+
+html
+  box-sizing: border-box
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+
+a
+  color: inherit
+  text-decoration: none
+  cursor: pointer
+
+h1, h2, h3, p
+  margin: 0
+
+img
+  max-width: 100%
+
+body
+  min-width: 320px
+  font-family: 'Inter', sans-serif
+  font-weight: 400
+
+h2
+  @include h2-992
+
+.container
+  max-width: 1360px
+  margin: 0 auto
+  padding: 0 40px
+
+.list-reset
+  margin: 0
+  padding: 0
+  list-style: none
+
+.btn-reset
+  padding: 0
+  border: none
+  background-color: transparent
+  cursor: pointer
+
+.flex
+  display: flex
+
+.main.invisible
+  background: #2D3343
+  opacity: 0.3
+
+.hidden
+  overflow: hidden
+
+.header.shadow
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1), inset 0px -1px 0px rgba(49, 59, 89, 0.15)
+
+.menu-header__logo-mobile
+  display: none
+  margin-right: auto
+
+.fixed-header
+  padding: 20px 0
+  justify-content: end
+  align-items: center
+  @include p6
+
+  &__list
+    margin-right: 80px
+
+  &__item
+    transition: color .3s ease-in-out
+
+    a
+      position: relative
+
+      &:focus-visible
+        outline: 2px solid rgba(226, 116, 16, 0.3)
+        border-radius: 2px
+        outline-offset: 8px
+
+      &::before
+        content: ""
+        position: absolute
+        opacity: 0
+        bottom: 0
+        width: 100%
+        height: 1px
+        border-bottom: 1px solid $color-accent-hover
+        transition: opacity .4s ease-in-out
+
+    &:hover
+      color: $color-accent-hover
+      a::before
+        opacity: 1
+
+    &:not(:last-child)
+      margin-right: 40px
+
+  &__btn
+    margin-right: 40px
+    padding: 7px 20px 7px 59px
+    outline: 1px solid $color-accent
+    border-radius: $border
+    background-image: url('./img/glasses.svg')
+    background-position: left 9% center
+    background-repeat: no-repeat
+    transition: color .3s ease-in-out, outline .3s ease-in-out
+
+    &:hover, &:active
+      color: $color-accent-hover
+
+    &:focus-visible
+      outline: 2px solid rgba(226, 116, 16, 0.3)
+
+  &__phone
+    position: relative
+    padding-left: 34px
+    @include p4
+    transition: color .3s ease-in-out, outline .3s ease-in-out
+
+    &::before
+      content: ""
+      position: absolute
+      bottom: -2px
+      left: 0
+      width: 25px
+      height: 25px
+      background-image: url('./img/phone.svg')
+      background-repeat: no-repeat
+      border: 1px solid $color-accent
+      background-position: center
+      border-radius: 50%
+
+    &:hover, &:active
+      color: $color-accent-hover
+
+    &:focus-visible
+      outline: 2px solid rgba(226, 116, 16, 0.3)
+      border-radius: $border
+      outline-offset: 8px
+
+  .square::before
+    border-radius: $border
+    bottom: -16px
+    width: 32px
+    height: 32px
+
+    &:hover, &:active
+      color: $color-accent-hover
+
+    &:focus-visible
+      outline: 2px solid rgba(226, 116, 16, 0.3)
+      border-radius: 2px
+      outline-offset: 8px
+
+header
+  position: fixed
+  width: 100%
+  background-color: $color-background
+  color: $color-titles
+  z-index: 10
+
+.menu
+  padding: 85px 0 43px
+  background-color: $color-background
+  color: $color-titles
+  @include p2
+
+  .container
+    position: relative
+
+  .menu-header
+    position: relative
+
+    &__logo
+      position: absolute
+      top: -75px
+      z-index: 10
+      transition: outline .3s ease-in-out
+
+      &:focus-visible
+        outline: 2px solid rgba(226, 116, 16, 0.3)
+        outline-offset: 3px
+        border-radius: $border
+
+    &__list
+      justify-content: end
+
+    &__item-link
+      position: relative
+      transition: color .3s ease-in-out
+
+      &::before
+        content: ""
+        position: absolute
+        opacity: 0
+        top: -13px
+        width: 100%
+        height: 12px
+        background-position: center
+        background-repeat: no-repeat
+        background-image: url('./img/header-hover.svg')
+        transition: opacity .4s ease-in-out
+
+      &:hover
+        color: $color-accent-hover
+        &::before
+          opacity: 1
+
+    &__item
+      position: relative
+
+      &:not(:last-child)
+        margin-right: 65px
+
+      &:hover .menu__sublist
+        opacity: 1
+        visibility: visible
+
+  &__sublist
+    position: absolute
+    opacity: 0
+    visibility: hidden
+    min-width: 453px
+    padding: 0 30px
+    top: 69px
+    left: -20px
+    background-color: $color-white
+    border-radius: 2px
+    @include p3
+    transition: opacity .3s ease-in-out
+    border-top: 1px solid $color-accent
+    z-index: 1
+
+    &::before
+      content: ""
+      position: absolute
+      bottom: 0
+      top: -44px
+      left: 0
+      width: 100%
+      height: 45px
+
+    &:hover
+      opacity: 1
+
+  &__subitem
+    padding-top: 24px
+    padding-bottom: 24px
+    border-bottom: 1px solid $color-background
+    transition: color .3s ease-in-out
+
+    a
+      position: relative
+
+      &::before
+        content: ""
+        position: absolute
+        opacity: 0
+        bottom: 0
+        top: 0
+        left: -30px
+        width: 25px
+        height: 55px
+        background-image: url('./img/triangle.svg')
+        background-repeat: no-repeat
+        transition: opacity .3s ease-in-out
+
+    &:hover
+      color: $color-accent-hover
+      cursor: pointer
+
+    &:hover a::before
+      opacity: 1
+
+.burger
+  display: none
+  margin-right: auto
+  width: 40px
+  height: 25px
+  cursor: pointer
+  position: relative
+
+.burger span
+  background-color: black
+  height: 3px
+  position: absolute
+  width: 100%
+  left: 0
+  border-radius: 1px
+  transition: all 0.3s ease
+
+  &:first-child
+    top: 0
+
+  &:nth-child(2)
+    top: 11px
+
+  &:last-child
+    top: 23px
+
+.burger.active span:nth-child(2)
+  opacity: 0
+
+.burger.active span:first-child,
+.burger.active span:last-child
+  top: 12px
+  background-color: $color-accent-hover
+
+.burger.active span:first-child
+  transform: rotate(45deg)
+
+.burger.active span:last-child
+  transform: rotate(-45deg)
+
+.menu-hidden
+  position: fixed
+  padding: 56px 40px 40px 0
+  height: 100vh
+  width: 32vw
+  top: 66px
+  background-color: $color-background
+  transform: translateX(-300%)
+  transition: transform .3s ease-in-out
+  z-index: 2
+  overflow: auto
+
+  &.visible
+    transform: translateX(0)
+
+  &__logo
+    margin-bottom: 27px
+    display: inline-block
+
+  .ac
+    background-color: unset
+    border: none
+    border-bottom: 1px solid $color-border
+
+  &__list
+    flex-direction: column
+    @include p2
+
+  &__item
+    padding: 32px 0
+    position: relative
+    a::before
+      display: none
+
+  &__item.is-active
+    &::after
+      content: "-"
+      position: absolute
+      font-size: 26px
+      border: 1px solid $color-accent-hover
+      color: $color-accent-hover
+      top: 25px
+      right: 0
+      text-align: center
+      width: 30px
+      height: 30px
+      border-radius: 50%
+
+    &::after.active
+      display: block
+
+    &:first-child
+      border-top: 1px solid $color-border
+
+  &__bg
+    position: fixed
+    height: 100vh
+    width: 21vw
+    left: 0
+    top: 66px
+    background-color: $color-background
+    z-index: 1
+    transform: translateX(-300%)
+    transition: transform .3s ease-in-out
+    &.visible
+      transform: translateX(0)
+
+  &__sublist
+    padding-left: 10px
+    @include p4
+
+.hero
+  background-image: url(./img/hero.png)
+  background-position: center
+  background-repeat: no-repeat
+  object-fit: cover
+  background-size: cover
+  z-index: -10
+
+  h1
+    margin-bottom: 50px
+    position: relative
+    color: $color-white
+    @include h1-992
+
+    &::after
+      content: ""
+      position: absolute
+      bottom: -29px
+      left: 0
+      width: 100%
+      height: 8px
+      background: linear-gradient(90deg, #E27410 -3.97%, rgba(196, 196, 196, 0) 102.88%, #025EA1 102.88%)
+      border-radius: 2px
+
+  p
+    max-width: 485px
+    margin-bottom: 120px
+    color: $color-white
+    @include p3
+
+  &__content
+    padding: 172px 0 49px
+
+  &__list
+    justify-content: space-between
+
+  &__item
+    width: 33%
+    padding: 17px 23px
+    align-items: center
+    background-color: $color-white
+    color: $color-text
+    border-radius: $border
+    transition: background-color .3s ease-in-out, transform .3s ease-in-out
+    @include p3
+
+    &:hover
+      cursor: pointer
+      color: $color-white
+      background-color: $color-accent-hover
+      transform: translateY(-10px)
+      path
+        fill: $color-white
+
+    svg
+      margin-right: 16px
+      transition: fill .3s ease-in-out
+
+    &:not(:last-child)
+      margin-right: 61px
+
+.services
+  padding: 88px 0 144px
+
+  h2
+    margin-bottom: 48px
+    color: $color-titles
+    transition: color .3s ease-in-out
+
+    a
+      position: relative
+      transition: outline .3s ease-in-out
+
+      &:focus-visible
+        outline: 2px solid rgba(226, 116, 16, 0.3)
+        outline-offset: 3px
+        border-radius: $border
+
+      &::after
+
+        content: ""
+        position: absolute
+        width: 40px
+        height: 42px
+        top: 0
+        bottom: 0
+        right: -58px
+        margin-top: auto
+        margin-bottom: auto
+        background-image: url(./img/services-title-arrow.svg)
+        background-repeat: no-repeat
+
+    &:hover
+      color: $color-accent-hover
+
+  &__list
+    display: grid
+    gap: 40px
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-rows: repeat(2, 260px)
+
+  &__item
+    position: relative
+    overflow: hidden
+    width: 100%
+    height: 100%
+    max-width: 400px
+    padding-top: 40px
+    padding-bottom: 47px
+    padding-left: 33px
+    padding-right: 44px
+    border-radius: $border
+    background: $color-gradient
+    color: $color-white
+    background: linear-gradient(90deg, #014C88 0%, #015DA0 48.84%, #026AB3 103.05%)
+    background: -moz-linear-gradient(top, #014C88 0%, #015DA0 48.84%, #026AB3 103.05%)
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#014C88), color-stop(50%,#015DA0), color-stop(100%,#026AB3))
+    background: -webkit-linear-gradient(top, #014C88 0%,#015DA0 50%,#026AB3 100%)
+    background: -o-linear-gradient(top, #014C88 0%,#015DA0 50%,#026AB3 100%)
+    background: -ms-linear-gradient(top, #014C88 0%,#015DA0 50%,#026AB3 100%)
+    background: linear-gradient(to bottom, #014C88 0%,#015DA0 50%,#026AB3 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#014C88', endColorstr='#026AB3',GradientType=0 )
+    transition: background .3s ease-in-out, transform .3s ease-in-out
+
+    h3
+      @include p1
+
+    &:first-child
+      grid-row-start: 1
+      grid-row-end: 3
+
+      .services__bg-img
+        width: 160px
+        height: 160px
+        background-size: 100%
+        left: 5px
+        bottom: 0
+
+      .square
+        left: -155px
+        bottom: -36px
+
+    a
+      flex-direction: column
+      justify-content: space-between
+      position: relative
+      z-index: 1
+      position: relative
+
+      &::after
+        opacity: 0
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        position: absolute
+        content: ""
+        outline: 2px solid rgba(226,116,16,0.8)
+        outline-offset: 0
+
+      &:focus-visible
+        border: none
+        a::after
+          opacity: 1
+
+    &:hover
+      background: $color-accent-hover
+      background: rgb(223,223,223)
+      background: -moz-linear-gradient(top, $color-accent-hover 0%, $color-accent-hover 100%)
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color-accent-hover), color-stop(100%,$color-accent-hover))
+      background: -webkit-linear-gradient(top, $color-accent-hover 0%, $color-accent-hover 100%)
+      background: -o-linear-gradient(top, $color-accent-hover 0%, $color-accent-hover 100%)
+      background: -ms-linear-gradient(top, $color-accent-hover 0%, $color-accent-hover 100%)
+      background: linear-gradient(to bottom, $color-accent-hover 0%, $color-accent-hover 100%)
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F47A0B', endColorstr='#F47A0B',GradientType=0 )
+      cursor: pointer
+      transform: translateY(-10px)
+
+    &:hover .services__link-more
+      opacity: 1
+
+    &:hover .services__bg-img
+      opacity: 0
+
+    &:hover svg
+      transform: scale(2.5)
+
+    &:hover path
+      fill: #014C88
+
+  &__link-more
+    opacity: 0
+    text-decoration: underline
+    @include p2
+    transition: opacity .3s ease-in-out
+    background-image: url('./img/services-arrow.svg')
+    background-repeat: no-repeat
+    background-position: left 40% center
+    object-fit: cover
+
+  &__bg-img
+    width: 80px
+    height: 80px
+    position: absolute
+    z-index: 1
+    bottom: -15px
+    left: -10px
+    background-repeat: no-repeat
+    object-fit: cover
+    transition: opacity .2s ease-in-out
+
+  .services-document
+    background-image: url('./img/services-document.svg')
+
+  .services-professor
+    background-image: url('./img/services-professor.svg')
+
+  .services-chemestry
+    background-image: url('./img/services-chemestry.svg')
+
+  .services-safety
+    background-image: url('./img/services-safety.svg')
+
+  .services-certificate
+    background-image: url('./img/services-certificate.svg')
+
+  .square
+    position: absolute
+    left: -37px
+    bottom: -36px
+    z-index: 0
+    transition: transform .3s ease-in-out,
+    path
+      transition: fill .3s ease-in-out
+
+.steps
+  overflow-x: hidden
+  position: relative
+  padding: 121px 0 142px
+  background-color: $color-background
+
+  h2
+    margin-bottom: 84px
+    text-align: center
+    color: $color-titles
+    z-index: 1
+    position: relative
+
+  &__bg-left
+    position: absolute
+    width: 532px
+    height: 557px
+    left: -260px
+    bottom: 0
+    background-position: center
+    background-repeat: no-repeat
+    object-fit: cover
+    background-image: url('./img/steps-logo.svg')
+
+  &__bg-right
+    position: absolute
+    width: 532px
+    height: 557px
+    right: -260px
+    bottom: 0
+    background-position: center
+    background-repeat: no-repeat
+    object-fit: cover
+    background-image: url('./img/steps-logo.svg')
+
+  &__list
+    position: relative
+    &::after
+      content: ""
+      position: absolute
+      width: 87%
+      height: 8px
+      top: 33px
+      left: 6%
+      background: linear-gradient(90deg, #025392 -3.97%, rgba(196, 196, 196, 0) 102.88%, #F4F7FB 102.88%)
+      z-index: 1
+
+  &__item
+    width: 195px
+    flex-direction: column
+    align-items: center
+    text-align: center
+    z-index: 2
+    @include p4
+    color: $color-text
+
+    &:not(:last-child)
+      margin-right: 22px
+
+    span
+      position: relative
+      display: flex
+      align-items: center
+      justify-content: center
+      margin-bottom: 65px
+      @include h2-992
+
+      &::after
+        content: ""
+        position: absolute
+        width: 111px
+        height: 111px
+        background-position: center
+        background-repeat: no-repeat
+        object-fit: cover
+        background-image: url('./img/steps-white-block.svg')
+        z-index: -1
+
+    &:first-child
+      span
+        color: $color-white
+        &::after
+          width: 130px
+          height: 130px
+          top: -35px
+          left: -58px
+          background-image: url('./img/steps-blue-block.svg')
+
+    &:last-child
+      span
+        color: $color-white
+        &::after
+          width: 130px
+          height: 130px
+          top: -37px
+          left: -38px
+          background-image: url('./img/steps-orange-block.svg')
+
+.team
+  padding: 144px 0
+
+  h2
+    margin-bottom: 34px
+    text-align: center
+    color: $color-titles
+
+  img
+    border-radius: $border
+
+  &__container
+    display: flex
+    justify-content: center
+    gap: 14px
+
+    div
+      display: flex
+      flex-direction: column
+      justify-content: flex-end
+      gap: 14px
+
+    a
+      display: flex
+      position: relative
+
+  &__btn
+    position: absolute
+    top: 73px
+    left: 0
+    right: 0
+    padding: 10px
+    margin-right: 105px
+    margin-left: 105px
+    border-radius: $border
+    background-color: $color-accent
+    color: $color-white
+    @include p4
+    transition: background-color .3s ease-in-out, outline .3s ease-in-out
+
+    &:hover, &:active
+      background-color: $color-accent-hover
+
+    &:focus-visible
+      outline: 2px solid rgba(226, 116, 16, 0.3)
+
+.feedback
+  padding: 120px 0
+  background: $color-gradient
+
+  &__wrapper
+    justify-content: space-between
+
+  h2
+    color: $color-white
+
+  &__questions-block
+    width: 60%
+    position: relative
+
+    &::after
+      content: ""
+      position: absolute
+      top: 0
+      opacity: 0.1
+      border: 2px solid #FFFFFF
+      right: -100px
+      height: 100%
+
+  .title-call
+    margin-bottom: 48px
+  .title-question
+    margin-bottom: 56px
+
+  .form
+
+    &__top
+      width: 100%
+      gap: 24px
+      margin-bottom: 31px
+
+    &__left
+      flex-direction: column
+      width: 50%
+
+    &__right
+      flex-direction: column
+      width: 50%
+
+    &__textarea
+      width: 100%
+      height: 100%
+      max-height: 370px
+      padding: 14px
+      border: 1px solid $color-border
+      border-radius: $border
+      resize: none
+      @include p3
+
+    &__input
+      padding: 11px 16px
+      border: 1px solid $color-border
+      border-radius: $border
+      color: $color-input
+      @include p3
+
+      &:not(:last-child)
+        margin-bottom: 24px
+
+    &__bottom
+      gap: 24px
+      align-items: center
+
+    &__check
+      width: 50%
+      color: $color-white
+      @include p7
+
+      a
+        color: $color-accent
+
+    &__btn
+      width: 50%
+      padding-top: 14px
+      padding-bottom: 14px
+      border-radius: $border
+      background-color: $color-accent
+      color: $color-white
+      transition: background-color .3s ease-in-out, outline .3s ease-in-out
+
+      &:hover, &:active
+        background-color: $color-accent-hover
+
+      &:focus-visible
+        outline: 2px solid rgba(226, 116, 16, 0.3)
+
+  &__phones
+    flex-direction: column
+    padding-left: 38px
+    color: $color-white
+    background-position: center left 2%
+    background-repeat: no-repeat
+    object-fit: cover
+    background-image: url('./img/icon-phone.svg')
+
+    &:not(:last-child)
+      margin-bottom: 37px
+
+    span
+      @include p7
+    a
+      @include p2
+
+.checkbox
+  position: absolute
+  z-index: -1
+  opacity: 0
+
+  &+label
+    display: flex
+    align-items: center
+    cursor: pointer
+
+  &+label::before
+    content: ""
+    display: inline-block
+    margin-right: 16px
+    width: 24px
+    height: 24px
+    background-color: $color-accent
+    border-radius: $border
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: 50%
+
+  &:checked+label::before
+    background-size: 16px
+    background-image: url('./img/agree.svg')
+
+.contacts
+  padding-top: 144px
+
+  &__offset
+    position: relative
+    background-color: $color-background
+
+  &__wrapper
+    max-width: 52%
+    padding: 65px 0 51px
+
+  h2
+    margin-bottom: 52px
+    color: $color-titles
+
+  &__subtitle
+    margin-bottom: 19px
+    padding-left: 32px
+    color: $color-titles
+    @include p4
+
+  &__text
+    @include p2
+    color: $color-text
+
+  &__general
+    margin-bottom: 60px
+
+  &__address, &__phones
+    width: 50%
+    margin-right: 20px
+
+    .contacts__subtitle
+      background-image: url('./img/icon-phone.svg')
+      background-position: left center
+      background-repeat: no-repeat
+      height: 25px
+      display: flex
+      align-items: center
+
+  &__email
+    .contacts__subtitle
+      background-image: url('./img/icon-mail.svg')
+      background-position: left center
+      background-repeat: no-repeat
+      height: 25px
+      display: flex
+      align-items: center
+
+  &__worktime
+    .contacts__subtitle
+      background-image: url('./img/icon-worktime.svg')
+      background-position: left center
+      background-repeat: no-repeat
+      height: 25px
+      display: flex
+      align-items: center
+
+  &__phones, &__worktime
+    div
+      display: flex
+      flex-direction: column
+      &:not(:last-child)
+        margin-bottom: 16px
+
+    span
+      @include p7
+      color: $color-titles
+
+  &__email, &__worktime
+    width: 50%
+
+  .map
+    width: 50%
+    max-width: 913px
+    height: 100%
+    position: absolute
+    right: 0
+    top: 0
+
+.footer
+  padding: 44px 0 28px
+  @include p7
+
+  &__container
+    justify-content: space-between
+
+  p
+    color: $color-text
+
+  a
+    color: $color-accent
+    transition: color .3s ease-in-out, outline .3s ease-in-out
+
+    &:hover, &:active
+      color: $color-accent-hover
+
+    &:focus-visible
+      outline: 2px solid rgba(226, 116, 16, 0.3)
+      border-radius: 2px
+      outline-offset: 8px
+
+@media(max-width: 1600px)
+
+  .team
+    &__btn
+      top: 0
+      bottom: 0
+      margin: 45px
+
+@media(max-width: 1500px)
+
+  .team
+    &__btn
+      margin: 30px
+
+@media(max-width: 1300px)
+  .fixed-header
+
+    &__list
+      margin-right: 42px
+
+  .menu
+
+    .menu-header
+      &__item:not(:last-child)
+        margin-right: 50px
+
+      &__logo
+        top: unset
+        bottom: 0
+        width: 67px
+
+  .services
+    padding-bottom: 122px
+
+    &__list
+      grid-template-columns: repeat(2, 1fr)
+      grid-template-rows: repeat(3, 260px)
+
+    &__item
+      max-width: unset
+
+@media(max-width: 1200px)
+
+  .menu
+    .menu-header__logo
+      bottom: -27px
+
+  .fixed-header
+    &__item:not(:last-child)
+      margin-right: 23px
+    &__btn
+      padding: 7px 13px 7px 40px
+      background-position: left 5% center
+
+  .hero
+    background-image: url(./img/hero-1024.png)
+
+    &__content
+      padding-top: 180px
+      padding-bottom: 52px
+
+    h1
+      margin-bottom: 43px
+
+      &::after
+        bottom: -27px
+
+    &__item
+
+      &:not(:last-child)
+        margin-right: 13px
+
+      &:first-child
+        width: calc(26.5% - 26px)
+      &:nth-child(2)
+        width: calc(37% - 26px)
+      &:last-child
+        width: calc(43% - 26px)
+
+  .feedback
+    padding-top: 80px
+
+    .title-question
+      margin-bottom: 30px
+
+    .title-call
+      margin-bottom: 92px
+
+    &__questions-block
+      width: 54%
+
+    &__phones
+      background-position: center left 3%
+
+    .form__agree-label
+      p
+        display: inline-grid
+
+  .contacts
+    padding-top: 124px
+
+    h2
+      margin-bottom: 52px
+
+    &__wrapper
+      max-width: 59%
+
+    .map
+      max-width: 446px
+
+    &__general
+      margin-bottom: 60px
+
+  .footer
+    padding: 28px 0
+
+  .team
+    padding-top: 112px
+    padding-bottom: 108px
+
+    h2
+      margin-bottom: 45px
+
+    &__container
+      gap: 10px
+
+      div
+        gap: 10px
+
+      div:nth-child(1)
+        width: 17%
+
+      div:nth-child(2)
+        width: 33%
+
+      div:nth-child(3)
+        width: 33%
+
+      div:nth-child(4)
+        width: 17%
+
+    &__left-hidden
+
+      img
+        object-fit: cover
+        object-position: right
+        height: 311px
+
+    &__right-hidden
+
+      img
+        object-fit: cover
+        object-position: left
+        height: 311px
+
+    &__btn
+      margin: 45px 27px
+
+    &__left-center
+      img
+        height: 45%
+        object-fit: cover
+
+    &__right-center
+      .big-img
+        height: 78%
+        object-fit: cover
+      a
+        height: 12%
+        img
+          width: 100%
+          object-fit: cover
+
+    &__btn
+      margin: 18px
+      padding: 5px
+
+  .steps
+    padding-bottom: 76px
+    padding-top: 113px
+
+    h2
+      margin-bottom: 51px
+
+    .container
+      overflow-x: auto
+      padding: 0
+      &::before
+        content: ""
+        position: absolute
+        width: 98px
+        height: 229px
+        top: 0
+        right: 0
+        bottom: 0
+        margin: auto 0
+        z-index: 5
+        background: linear-gradient(270deg, #F9FBFD -51.02%, rgba(249, 251, 253, 0) 89.29%)
+
+    &__list
+      min-width: 100%
+      min-height: 229px
+      padding: 34px 78px
+      overflow-x: auto
+      &::after
+        width: 100%
+        top: 66px
+        left: 11%
+
+      &::-webkit-scrollbar
+        display: none
+
+    &__item:not(:last-child)
+      margin-right: 124px
+
+@media(max-width: 1023px)
+
+  .hero
+    &__item
+      padding: 8px
+
+      &:not(:last-child)
+        margin-right: 12px
+      &:first-child
+        width: calc(26.5% - 24px)
+
+      &:first-child
+        width: calc(26.5% - 24px)
+
+      &:first-child
+        width: calc(26.5% - 24px)
+
+    svg
+      margin-right: 7px
+
+  .fixed-header
+    justify-content: space-between
+
+    &__item:not(:last-child)
+      margin-right: 25px
+    &__btn
+      margin-right: 30px
+    &__list
+      margin-right: 20px
+    &__phone
+      font-size: 14px
+
+    .menu-hidden
+      width: 40vw
+
+  .contacts
+
+    .container
+      width: 100%
+
+    &__wrapper
+      max-width: unset
+
+    &__offset
+      display: flex
+      flex-direction: column-reverse
+
+    .map
+      height: 444px
+      width: 100%
+      max-width: unset
+      position: static
+
+  .feedback__questions-block::after
+    right: -4%
+    border: 1px solid #FFFFFF
+
+@media(max-width: 768px)
+  h2
+    @include h2-768
+    font-weight: 600
+
+  .menu
+    padding: 75px 0 30px 0
+    @include p4
+
+    .menu-header__logo
+      left: 0px
+      top: -15px
+      width: 48px
+
+  .fixed-header
+    @include p7
+    padding: 15px 0
+
+    &__item:not(:last-child)
+      margin-right: 33px
+    &__list
+      margin-right: 13px
+    &__item:not(:last-child)
+      margin-right: 27px
+    &__btn
+      margin-right: 15px
+
+  .hero
+    h1
+      @include h1-768
+
+    &__content
+      padding-top: 152px
+
+    &__item
+      @include p6
+
+    p
+      margin-bottom: 195px
+
+    &__content
+      padding-bottom: 41px
+
+  .services
+    padding-top: 60px
+    padding-bottom: 103px
+
+    h2
+      margin-bottom: 37px
+
+    &__list
+      gap: 30px
+      grid-template-rows: repeat(3, 200px)
+
+    &__item
+      padding: 23px
+
+      h3
+        @include p2
+
+      &:first-child .services__bg-img
+        background-size: 63%
+        left: 15px
+        bottom: -28px
+
+    &__bg-img
+      background-size: 62%
+      bottom: -23px
+      left: 0px
+
+  .steps
+    padding-top: 86px
+    padding-bottom: 38px
+
+  .team
+    padding: 97px 0
+
+    h2
+      margin-bottom: 16px
+
+    &__left-hidden img
+      max-height: 230px
+
+    &__right-hidden img
+      max-height: 230px
+
+    &__right-center .big-img
+      height: 74%
+
+    &__right-center a
+      height: 16%
+
+  .feedback
+    padding-top: 87px
+    padding-bottom: 102px
+
+    &__wrapper
+      flex-direction: column
+
+    &__questions-block
+      width: unset
+
+    .form
+
+      &__top
+        flex-direction: column
+
+      &__left
+        width: 100%
+        flex-direction: row
+
+      &__input:not(:last-child)
+        margin-bottom: 0
+        margin-right: 20px
+
+      .title-question
+        margin-bottom: 38px
+
+      &__input
+        width: 100%
+
+      &__right
+        width: 66%
+
+      &__textarea
+        height: 132px
+
+    .title-call
+      margin-bottom: 28px
+
+    &__phones-wrapper
+      display: flex
+
+    &__phones
+      padding-left: 31px
+      &:not(:last-child)
+        margin-bottom: 0
+        margin-right: 45px
+    &__questions-block::after
+      display: none
+
+  .contacts
+    padding-top: 107px
+
+    &__wrapper
+      padding-bottom: 87px
+
+    h2
+      margin-bottom: 51px
+
+    &__general
+      margin-bottom: 45px
+
+    &__address, &__phones
+      width: 45%
+      margin-right: 16px
+
+@media(max-width:  700px)
+
+  .container
+    padding: 0 15px
+
+  h2
+    @include h2-540
+
+  .fixed-header
+    padding: 10px 0
+
+  .burger
+    margin-right: 20px
+
+  .menu-hidden
+    width: 100vw
+    top: 47px
+    &__bg
+      width: 100vw
+      top: 47px
+
+  .hero
+    background-image: url(./img/hero-320.png)
+
+    h1
+      @include h1-540
+
+    p
+      margin-bottom: 79px
+      @include p5
+
+    &__content
+      padding-bottom: 28px
+      padding-top: 144px
+
+    &__list
+      flex-direction: column
+
+    &__item
+      padding: 18px 16px
+      &:first-child
+        width: unset
+      &:nth-child(2)
+        width: unset
+      &:last-child
+        width: unset
+
+      &:not(:last-child)
+        margin-right: 0
+        margin-bottom: 6px
+
+    svg
+      width: 28px
+      height: 28px
+      margin-right: 12px
+
+  .services
+    padding-bottom: 63px
+    h2
+      margin-bottom: 22px
+      a::after
+        width: 24px
+        height: 25px
+        background-size: 100%
+        right: -30px
+
+    &__item
+      min-height: 200px
+      padding-top: 24px
+      padding-left: 17px
+
+      &:first-child
+
+        .square
+          width: 138px
+          height: 138px
+          left: -60px
+          bottom: -44px
+
+        .services__bg-img
+          background-size: 100%
+          height: 48px
+          width: 48px
+          left: 0px
+          bottom: 0px
+
+      .square
+        left: -38px
+        bottom: -49px
+
+    &__bg-img
+      height: 60px
+      bottom: 3px
+      left: 5px
+
+    &__list
+      display: flex
+      flex-direction: column
+      gap: 16px
+
+    &__bg-img
+      background-size: 100%
+      height: 48px
+      width: 48px
+
+  .steps
+    padding-top: 39px
+    padding-bottom: 0
+
+    h2
+      max-width: 79%
+      margin: 0 auto
+      margin-bottom: 20px
+
+    &__list
+      padding: 33px 12px
+      min-height: unset
+
+      &::after
+        left: 0
+        top: 56px
+        height: 4px
+
+    &__bg-left
+      width: 320px
+      height: 339px
+      left: 0
+      top: 0
+      background-size: 100%
+
+    &__bg-right
+      display: none
+
+    &__item
+      min-width: 113px
+      @include p6
+
+      span
+        margin-bottom: 35px
+        font-size: 43px
+        &::after
+          width: 93px
+          height: 93px
+          background-size: 100%
+          top: -19px
+          left: -35px
+
+      &:first-child span::after
+        width: 103px
+        height: 103px
+        background-size: 100%
+        top: -32px
+        left: -31px
+
+      &:last-child span::after
+        width: 103px
+        height: 103px
+        background-size: 100%
+        top: -32px
+        left: -46px
+
+      &:not(:last-child)
+        margin-right: 60px
+
+  .team
+    padding-top: 52px
+    padding-bottom: 65px
+
+    &__container
+      gap: 4px
+
+      div:nth-child(1)
+        width: 8%
+
+      div:nth-child(2)
+        width: 42%
+
+      div:nth-child(3)
+        width: 42%
+
+      div:nth-child(4)
+        width: 8%
+
+    &__btn
+      margin: 0
+      font-size: 14px
+
+    div
+      gap: 4px
+
+    &__left-hidden
+      img
+        max-height: 130px
+
+    &__right-hidden
+      img
+        max-height: 130px
+
+    h2
+      margin-bottom: 32px
+
+  .feedback
+    padding-top: 41px
+    padding-bottom: 62px
+
+    .title-question
+      margin-bottom: 22px
+      text-align: center
+
+    .title-call
+      margin-bottom: 21px
+
+    .form
+
+      &__left
+        flex-direction: column
+      &__input:not(:last-child)
+        margin-bottom: 20px
+        margin-right: 0
+
+      &__right
+        width: 100%
+
+      &__bottom
+        flex-direction: column
+      &__check
+        width: 100%
+      &__btn
+        width: 100%
+
+    &__questions-block
+      margin-bottom: 48px
+
+    &__phones-wrapper
+      flex-direction: column
+
+    &__phones
+      padding-left: 33px
+      background-position: center left 1%
+
+      &:not(:last-child)
+        margin-right: 0
+        margin-bottom: 16px
+
+  .contacts
+    padding-top: 64px
+    .map
+      height: 244px
+
+    &__wrapper
+      padding-top: 42px
+      padding-bottom: 73px
+
+    h2
+      margin-bottom: 41px
+
+    &__general
+      flex-direction: column
+      margin-bottom: 39px
+
+    &__address, &__phones
+      width: 100%
+      margin-right: 0
+      margin-bottom: 27px
+
+    &__subtitle
+      margin-bottom: 10px
+      @include p6
+
+    &__text
+      @include p4
+
+    &__info
+      flex-direction: column
+
+    &__email,  &__worktime
+      width: 100%
+
+  .footer
+    &__container
+      flex-direction: column
+    p
+      margin-bottom: 12px
